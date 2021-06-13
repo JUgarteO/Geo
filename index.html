@@ -1,37 +1,40 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta name="author" content="Jugarte">
+    <head>
+        <meta name="author" content="Jugarte">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="test geo">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 		<title>Geo</title>
-		<style>
+        <style>
         		body,h1,h2	{
            		 font-family: -apple-system,
                		 BlinkMacSystemFont, sans-serif;	}
 				p,h1,h2  			{
 				text-align: center;	}
 		</style>
-		<script>
-function geoloc() {
-d=document.getElementById("demo");
-if (navigator.geolocation){
-   d.innerHTML="<p>Tu dispositivo soporta la geolocalización.</p>";
-   navigator.geolocation.getCurrentPosition(showPosition);
-   }
-else {
-   d.innerHTML="<p>Lo sentimos, tu dispositivo no admite la geolocaización.</p>";
-   }
-}
-function showPosition(position){
-  latitud=position.coords.latitude;
-  longitud=position.coords.longitude;
-  d.innerHTML+="<p>Latitud: "+latitud+"</p>";
-  d.innerHTML+="<p>Longitud: "+longitud+"</p>";
-}
-	</Script>
-
-<div id="geo1">
-	<button onclick="geoloc()">Ver geolocalización.</button><br/>
-	<div id="demo"></div>
-  </div>
+<body>
+<h1>Georreferenciación</h1>
+<center><button type="button" class="btn btn-success btn-lg" onclick="getLocation()" >Ver Coordenadas </button></center>
+<!--<button onclick="getLocation()">Ver Geolocalización</button>-->
+<br>
+<p id="geo"></p>
+<script>
+    var x = document.getElementById("geo");
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else { 
+        x.innerHTML = "Georrefernciación no es soportada por este buscador.";
+      }
+    }
+    function showPosition(position) {
+      x.innerHTML = "Latitud: " + position.coords.latitude + 
+      "<br>Longitud: " + position.coords.longitude;
+    }
+    </script>
+</body>
+</html>
