@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="author" content="Jugarte">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="test geo">
+		<title>Geo</title>
+		<style>
+        		body,h1,h2	{
+           		 font-family: -apple-system,
+               		 BlinkMacSystemFont, sans-serif;	}
+				p,h1,h2  			{
+				text-align: center;	}
+		</style>
+		<script>
+
+function geoloc() {
+  d=document.getElementById("demo");
+  if (navigator.geolocation){
+    d.innerHTML="<p>Tu dispositivo soporta la geolocalización.</p>";
+    navigator.geolocation.getCurrentPosition(showPosition);
+  }
+else {
+    d.innerHTML="<p>Lo sentimos, tu dispositivo no admite la geolocaización.</p>";
+  }
+}
+function showPosition(position){
+  latitud=position.coords.latitude;
+  longitud=position.coords.longitude;
+  d.innerHTML+="<p>Latitud: "+latitud+"</p>";
+  d.innerHTML+="<p>Longitud: "+longitud+"</p>";
+}
+	</Script>
+
+<div id="geo1">
+	<button onclick="geoloc()">Ver geolocalización.</button><br/>
+	<div id="demo"></div>
+  </div>
